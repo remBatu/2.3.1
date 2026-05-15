@@ -8,6 +8,6 @@ public interface UserDao {
     List<User> getUsers();
     User getUser(Long id);
     void addUser(User user);
-    void editUser(Long id, User changedUser);
+    void editUser(User changedUser);
     void deleteUser(Long id);
 }

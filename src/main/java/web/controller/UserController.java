@@ -14,7 +14,7 @@ public class UserController {
 
     private final UserService userService;
 
-    private UserController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -46,9 +46,9 @@ public class UserController {
 
     @PostMapping("/users/edit")
     public String changeUser(@RequestParam("id") Long id,
-                                               @ModelAttribute("user") User changedUser,
-                                               Model model) {
-        userService.editUser(id, changedUser);
+                             @ModelAttribute("user") User changedUser,
+                             Model model) {
+        userService.editUser(changedUser);
         model.addAttribute("users", userService.getUsers());
         return "users";
     }
