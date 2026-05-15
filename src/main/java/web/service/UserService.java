@@ -1,0 +1,13 @@
+package web.service;
+
+import web.model.User;
+
+import java.util.List;
+
+public interface UserService {
+    List<User> getUsers();
+    User getUser(Long id);
+    void addUser(User user);
+    void editUser(Long id, User changedUser);
+    void deleteUser(Long id);
+}

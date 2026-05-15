@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о пользователе</title>
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 40px auto;
+            font-family: Arial, sans-serif;
+        }
+        h2 { text-align: center; }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input[readonly] {
+            background-color: #f4f4f4;
+            color: #666;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 20px;
+        }
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Информация о пользователе</h2>
+
+    <form th:action="@{/users/edit}" th:object="${user}" method="post">
+
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" th:field="*{id}" id="id" readonly="readonly" />
+        </div>
+
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" th:field="*{name}" id="name" />
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Фамилия:</label>
+            <input type="text" th:field="*{surname}" id="surname" />
+        </div>
+
+        <div class="form-group">
+            <label for="age">Возраст:</label>
+            <input type="number"
+                   th:field="*{age}"
+                   id="age"
+                   pattern="[0-9]+"
+                   title="Пожалуйста, введите только цифры"
+                   required />
+        </div>
+
+        <button type="submit" class="btn-submit">Внести изменения</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователей</title>
+    <style>
+        h2 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+        table { border-collapse: collapse; margin-bottom: 20px; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .actions { white-space: nowrap; width: 1%; }
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            margin-right: 5px;
+        }
+        .btn-edit {
+            background-color: #28a745;
+        }
+        .btn-edit:hover {
+            background-color: #218838;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+        }
+        .btn-delete:hover {
+            background-color: #bd2130;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Список пользователей</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возрастс</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">ид</td>
+        <td th:text="${user.name}">Имя</td>
+        <td th:text="${user.surname}">Фамилия</td>
+        <td th:text="${user.age}">возраст</td>
+        <td class="actions">
+            <a th:href="@{/users/user(id=${user.id})}" class="btn btn-edit">Редактировать</a>
+            <form th:action="@{/users/delete(id=${user.id})}" method="post" class="inline-form">
+                <button type="submit" class="btn btn-delete">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/users/new}" class="btn btn-edit">Добавить</a>
+
+</body>
+</html>
+

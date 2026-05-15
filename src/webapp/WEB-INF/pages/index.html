@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Навигация</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .btn-list {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .btn-list:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
+
+<div class="container">
+    <a th:href="@{/users}" class="btn-list">Перейти к списку пользователей</a>
 </div>
+
 </body>
 </html>
