@@ -36,7 +36,6 @@ public class UserController {
         return "user_new";
     }
 
-
     @PostMapping("/users")
     public String addUser(@ModelAttribute("user") User user, Model model) {
         userService.addUser(user);
@@ -45,8 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/users/edit")
-    public String changeUser(@ModelAttribute("user") User changedUser,
-                             Model model) {
+    public String changeUser(@ModelAttribute("user") User changedUser, Model model) {
         userService.editUser(changedUser);
         model.addAttribute("users", userService.getUsers());
         return "users";
@@ -58,6 +56,4 @@ public class UserController {
         model.addAttribute("users", userService.getUsers());
         return "users";
     }
-
-
 }

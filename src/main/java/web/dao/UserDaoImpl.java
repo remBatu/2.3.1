@@ -12,12 +12,12 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
 
     @Transactional(readOnly = true)
     @Override
     public List<User> getUsers() {
-        return em.createQuery("FROM User", User.class).getResultList();
+        return em.createQuery("FROM User u ORDER BY u.id", User.class).getResultList();
     }
 
     @Transactional(readOnly = true)
